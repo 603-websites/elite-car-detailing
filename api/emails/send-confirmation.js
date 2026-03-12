@@ -13,6 +13,13 @@ import {
   validateVehicleSize,
   sanitizeOptionalText
 } from '../lib/validation.js';
+import {
+  handlePreflight,
+  setCorsHeaders,
+  setSecurityHeaders,
+  validateOrigin,
+  getClientIP
+} from '../lib/security.js';
 
 // Server-side environment variable
 /* eslint-disable no-undef */
@@ -20,16 +27,26 @@ const resendApiKey = process.env.RESEND_API_KEY;
 /* eslint-enable no-undef */
 
 export default async function handler(req, res) {
+  // Set security headers
+  setSecurityHeaders(res);
+
   // Handle CORS preflight
-  if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    return res.status(200).json({});
+  if (handlePreflight(req, res)) {
+    return;
   }
 
   // Set CORS headers for actual request
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  setCorsHeaders(req, res);
+
+  // Validate origin (CSRF protection)
+  const originCheck = validateOrigin(req);
+  if (!originCheck.valid) {
+    console.warn('CSRF: Invalid origin on email endpoint', { origin: originCheck.origin, ip: getClientIP(req) });
+    return res.status(403).json({
+      success: false,
+      error: 'Forbidden: Invalid request origin'
+    });
+  }
 
   // Only allow POST requests
   if (req.method !== 'POST') {
