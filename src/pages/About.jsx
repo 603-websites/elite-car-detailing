@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -205,12 +206,12 @@ function About() {
           <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8">
             Let us bring our precision and passion to your vehicle.
           </p>
-          <a
-            href="/booking"
+          <Link
+            to="/booking"
             className="inline-block bg-luxury-gold text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-luxury-gold/90 transition-colors text-sm sm:text-base md:text-lg"
           >
             Schedule Your Service
-          </a>
+          </Link>
         </motion.div>
       </section>
 

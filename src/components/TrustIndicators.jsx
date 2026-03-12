@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import car4 from '../assets/images/cars/car4.jpg';
 
 const TrustIndicators = () => {
@@ -84,12 +85,12 @@ const TrustIndicators = () => {
 
         {/* CTA - Full width on mobile */}
         <div className="mt-8 sm:mt-10 md:mt-12 text-center">
-          <a
-            href="/booking"
+          <Link
+            to="/booking"
             className="inline-block w-full sm:w-auto bg-luxury-gold hover:bg-luxury-dark-gold text-luxury-black font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-sm transition-all duration-300 uppercase tracking-wider text-sm sm:text-base"
           >
             Book Your Service
-          </a>
+          </Link>
         </div>
       </div>
     </section>
