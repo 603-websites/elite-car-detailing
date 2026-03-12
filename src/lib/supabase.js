@@ -14,23 +14,23 @@ if (import.meta.env.DEV) {
 if (!supabaseUrl || !supabaseAnonKey) {
   const errorMessage = `
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  SUPABASE CONFIGURATION MISSING
+SUPABASE CONFIGURATION MISSING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 The Supabase environment variables are not configured.
 
-🔧 TO FIX IN DEVELOPMENT:
+TO FIX IN DEVELOPMENT:
    1. Copy .env.example to .env
    2. Add your Supabase credentials to .env
    3. Restart the dev server
 
-🚀 TO FIX IN PRODUCTION (Vercel):
+TO FIX IN PRODUCTION (Vercel):
    1. Go to your Vercel project settings
    2. Navigate to Environment Variables
    3. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY
    4. Redeploy the application
 
-📖 See .env.example for the required variables
+See .env.example for the required variables
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   `;

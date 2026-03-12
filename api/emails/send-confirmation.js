@@ -328,7 +328,7 @@ export default async function handler(req, res) {
     });
 
     // Log success (using sanitized data)
-    console.log('✅ Email sent:', {
+    console.log('Email sent:', {
       to: sanitizedBookingData.customer_email,
       emailId: emailResponse.id,
       ip: req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || 'unknown'

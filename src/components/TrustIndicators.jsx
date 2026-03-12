@@ -1,18 +1,21 @@
 import React from 'react';
+import car4 from '../assets/images/cars/car4.jpg';
 
 const TrustIndicators = () => {
   // Condensed stats - FRD: Keep content essential on mobile
   const stats = [
-    { number: '5', label: 'States Served', icon: '📍', iconLabel: 'Location pin' },
-    { number: '5-Star', label: 'Service', icon: '⭐', iconLabel: 'Star rating' },
-    { number: '100%', label: 'Satisfaction', icon: '✅', iconLabel: 'Check mark' }
+    { number: '5', label: 'States Served' },
+    { number: '5-Star', label: 'Service' },
+    { number: '100%', label: 'Satisfaction' }
   ];
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 bg-luxury-dark-gray relative overflow-hidden">
-      {/* Subtle decorative elements */}
-      <div className="absolute top-0 left-0 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-luxury-gold/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-luxury-gold/5 rounded-full blur-3xl"></div>
+    <section className="py-8 sm:py-12 md:py-16 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img src={car4} alt="" className="w-full h-full object-cover object-center" loading="lazy" aria-hidden="true" />
+      </div>
+      <div className="absolute inset-0 bg-luxury-black/85"></div>
 
       <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 relative z-10">
         {/* Section Header - Condensed */}
@@ -33,10 +36,7 @@ const TrustIndicators = () => {
               key={index}
               className="bg-luxury-black border border-luxury-gold/30 p-4 sm:p-6 text-center hover:border-luxury-gold transition-all duration-300 rounded-sm group"
             >
-              <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300" role="img" aria-label={stat.iconLabel}>
-                {stat.icon}
-              </div>
-              <p className="text-3xl sm:text-4xl font-bold text-luxury-white mb-1 sm:mb-2">{stat.number}</p>
+              <p className="text-3xl sm:text-4xl font-bold text-luxury-gold mb-1 sm:mb-2">{stat.number}</p>
               <p className="text-luxury-white/60 text-xs sm:text-sm uppercase tracking-wider">
                 {stat.label}
               </p>

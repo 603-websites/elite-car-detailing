@@ -2,15 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useScrollAnimation, fadeInUp } from '../hooks/useScrollAnimation';
+import car8 from '../assets/images/cars/car8.jpg';
 
 const CTABanner = () => {
   const { ref, isInView } = useScrollAnimation();
 
   return (
-    <section className="py-12 sm:py-16 md:py-24 bg-gradient-to-r from-luxury-gold/10 to-luxury-gold/5 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-luxury-gold/5 rounded-full blur-3xl" aria-hidden="true"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-luxury-gold/5 rounded-full blur-3xl" aria-hidden="true"></div>
+    <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={car8}
+          alt=""
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+          aria-hidden="true"
+        />
+      </div>
+      <div className="absolute inset-0 bg-luxury-black/80"></div>
 
       <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 relative z-10">
         <motion.div

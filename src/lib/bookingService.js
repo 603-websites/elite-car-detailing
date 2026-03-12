@@ -55,7 +55,7 @@ export const createBooking = async (bookingData) => {
       throw new Error(errorMessage);
     }
 
-    console.log('✅ Booking created successfully:', result.data.id);
+    console.log('Booking created successfully:', result.data.id);
 
     // Send confirmation email via API
     try {
@@ -73,11 +73,11 @@ export const createBooking = async (bookingData) => {
       const emailResult = await emailResponse.json();
 
       if (emailResult.success) {
-        console.log('✅ Confirmation email sent');
+        console.log('Confirmation email sent');
       } else if (emailResult.demo) {
-        console.log('📧 Email service not configured - demo mode');
+        console.log('Email service not configured - demo mode');
       } else {
-        console.warn('⚠️ Email sending failed:', emailResult.error);
+        console.warn('Email sending failed:', emailResult.error);
       }
     } catch (emailError) {
       console.error('Email error (non-critical):', emailError);

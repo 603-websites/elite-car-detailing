@@ -140,7 +140,7 @@ export default async function handler(req, res) {
       if (error.code === '42P01') {
         console.error('Table contact_submissions does not exist. Please create it in Supabase.');
         // For now, just log to console instead of failing
-        console.log('📧 Contact form submission (would be saved to DB):', contactSubmission);
+        console.log('Contact form submission (would be saved to DB):', contactSubmission);
 
         return res.status(200).json({
           success: true,
@@ -157,7 +157,7 @@ export default async function handler(req, res) {
     }
 
     // Log successful submission
-    console.log('✅ Contact form submitted:', {
+    console.log('Contact form submitted:', {
       id: data.id,
       name: contactSubmission.name,
       email: contactSubmission.email,

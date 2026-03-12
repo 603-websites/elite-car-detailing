@@ -208,6 +208,6 @@ export const generateBookingConfirmationEmail = async (bookingData) => {
  */
 export const sendAdminNotification = async (bookingData) => {
   // Similar implementation for admin notifications
-  console.log('📧 Admin notification for booking:', bookingData.id);
+  console.log('Admin notification for booking:', bookingData.id);
   return { success: true };
 };

@@ -443,7 +443,7 @@ const Booking = () => {
                             {bookingData.service.package.name}
                           </p>
                           <p className="text-luxury-white/60 text-sm">
-                            {bookingData.service.category === 'auto' ? '🚗 Auto' : '✈️ Jet'} • {bookingData.service.vehicleSize}
+                            Auto • {bookingData.service.vehicleSize}
                           </p>
                           {bookingData.service.addons.length > 0 && (
                             <div className="mt-2">

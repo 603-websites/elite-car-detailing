@@ -217,7 +217,7 @@ export default async function handler(req, res) {
     }
 
     // Log successful booking (for monitoring)
-    console.log('✅ Booking created:', {
+    console.log('Booking created:', {
       id: data.id,
       customer: booking.customer_name,
       date: booking.appointment_date,

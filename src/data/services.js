@@ -1,0 +1,256 @@
+import car1 from '../assets/images/cars/car1.JPEG';
+import car2 from '../assets/images/cars/car2.jpg';
+import car3 from '../assets/images/cars/car3.jpg';
+import car4 from '../assets/images/cars/car4.jpg';
+import car5 from '../assets/images/cars/car5.jpg';
+import car6 from '../assets/images/cars/car6.JPEG';
+import car7 from '../assets/images/cars/car7.jpg';
+import car8 from '../assets/images/cars/car8.jpg';
+
+// Service cards shown on the main Services grid page
+export const serviceCards = [
+  {
+    slug: 'exterior-detailing',
+    title: 'Exterior Detailing',
+    description: 'Restore your vehicle\'s shine with our premium exterior detailing service. We deep-clean, polish, and protect every surface.',
+    image: car5,
+  },
+  {
+    slug: 'interior-detailing',
+    title: 'Interior Detailing',
+    description: 'Deep-clean and restore your vehicle\'s interior to showroom condition with premium leather care and fabric treatment.',
+    image: car3,
+  },
+  {
+    slug: 'ceramic-coating',
+    title: 'Ceramic Coating',
+    description: 'Long-lasting 9H ceramic protection that shields your paint from UV, chemicals, and environmental damage.',
+    image: car4,
+  },
+  {
+    slug: 'paint-correction',
+    title: 'Paint Correction',
+    description: 'Multi-stage paint correction to remove swirl marks, scratches, and oxidation for a flawless mirror finish.',
+    image: car7,
+  },
+  {
+    slug: 'paint-protection-film',
+    title: 'Paint Protection Film',
+    description: 'Protect against chips, scratches, and environmental damage while keeping your vehicle\'s finish flawless.',
+    image: car2,
+  },
+  {
+    slug: 'full-detail',
+    title: 'Full Detail Package',
+    description: 'Our comprehensive detailing package covers every inch of your vehicle inside and out for a complete transformation.',
+    image: car8,
+  },
+  {
+    slug: 'engine-bay',
+    title: 'Engine Bay Detailing',
+    description: 'Complete engine bay cleaning and dressing for a showroom-quality engine compartment.',
+    image: car6,
+  },
+  {
+    slug: 'headlight-restoration',
+    title: 'Headlight Restoration',
+    description: 'Professional oxidation removal and UV sealing to restore clarity and improve nighttime visibility.',
+    image: car1,
+  },
+  {
+    slug: 'maintenance-plans',
+    title: 'Maintenance Plans',
+    description: 'Keep your vehicle looking its best year-round with our scheduled maintenance and protection programs.',
+    image: car3,
+  },
+];
+
+// Full service detail data keyed by slug
+export const serviceData = {
+  'exterior-detailing': {
+    title: 'Exterior Detailing',
+    description: 'Restore your vehicle\'s shine with our premium exterior detailing service. We deep-clean, polish, and protect every surface to bring back that showroom finish.',
+    heroImage: car5,
+    price: 'From $199',
+    priceNote: 'Final price based on vehicle size and condition',
+    features: [
+      'Hand wash and dry with pH-neutral soap',
+      'Clay bar treatment to remove contaminants',
+      'Machine polish for swirl removal',
+      'Carnauba wax or sealant application',
+      'Wheel and tire cleaning and dressing',
+      'Window cleaning (exterior)',
+      'Trim and chrome polishing',
+      'Tire shine application',
+    ],
+    packages: [
+      { name: 'Sedan / Coupe', price: '$199' },
+      { name: 'SUV / Truck', price: '$249' },
+      { name: 'Exotic / Oversized', price: '$349' },
+    ],
+  },
+  'interior-detailing': {
+    title: 'Interior Detailing',
+    description: 'Deep-clean and restore your vehicle\'s interior to showroom condition. We treat every surface with premium products for a fresh, like-new cabin.',
+    heroImage: car3,
+    price: 'From $249',
+    priceNote: 'Final price based on vehicle size and condition',
+    features: [
+      'Full interior vacuum and blow-out',
+      'Leather cleaning and conditioning',
+      'Fabric and carpet shampooing',
+      'Dashboard and console detailing',
+      'Door panel and trim cleaning',
+      'Window cleaning (interior)',
+      'Air vent deep cleaning',
+      'Odor elimination treatment',
+    ],
+    packages: [
+      { name: 'Sedan / Coupe', price: '$249' },
+      { name: 'SUV / Truck', price: '$299' },
+      { name: 'Exotic / Oversized', price: '$399' },
+    ],
+  },
+  'ceramic-coating': {
+    title: 'Ceramic Coating',
+    description: 'Our professional-grade 9H ceramic coating provides years of protection against UV rays, chemicals, bird droppings, and environmental contaminants.',
+    heroImage: car4,
+    price: 'From $599',
+    priceNote: 'Includes paint correction prep. 2-5 year protection.',
+    features: [
+      '9H hardness ceramic coating application',
+      'Full paint decontamination and prep',
+      'Single-stage paint correction included',
+      'Hydrophobic self-cleaning properties',
+      'UV protection and chemical resistance',
+      'Enhanced gloss and depth of color',
+      '2-5 year coating warranty',
+      'Aftercare kit included',
+    ],
+    packages: [
+      { name: '2-Year Coating', price: '$599' },
+      { name: '3-Year Coating', price: '$899' },
+      { name: '5-Year Coating', price: '$1,299' },
+    ],
+  },
+  'paint-correction': {
+    title: 'Paint Correction',
+    description: 'Multi-stage paint correction to remove swirl marks, scratches, water spots, and oxidation. Restore your paint to a flawless, mirror-like finish.',
+    heroImage: car7,
+    price: 'From $399',
+    priceNote: 'Final price depends on paint condition severity',
+    features: [
+      'Paint thickness measurement and assessment',
+      'Full decontamination wash and clay bar',
+      'Single or multi-stage machine polishing',
+      'Swirl mark and scratch removal',
+      'Water spot and oxidation correction',
+      'High-gloss finish restoration',
+      'Paint sealant or wax protection',
+      'Final inspection under LED lighting',
+    ],
+    packages: [
+      { name: 'Single-Stage Correction', price: '$399' },
+      { name: 'Two-Stage Correction', price: '$599' },
+      { name: 'Multi-Stage (Full)', price: '$899' },
+    ],
+  },
+  'paint-protection-film': {
+    title: 'Paint Protection Film',
+    description: 'Premium clear bra protection film (PPF) that shields your vehicle from rock chips, scratches, and road debris while maintaining a factory-fresh appearance.',
+    heroImage: car2,
+    price: 'From $799',
+    priceNote: 'Coverage area determines final price',
+    features: [
+      'Self-healing thermoplastic urethane film',
+      'Virtually invisible protection',
+      'Rock chip and scratch prevention',
+      'UV and yellowing resistant',
+      'Custom-cut precision installation',
+      'Professional squeegee finish',
+      '5-10 year manufacturer warranty',
+      'Maintains resale value',
+    ],
+    packages: [
+      { name: 'Partial Front (Hood + Bumper)', price: '$799' },
+      { name: 'Full Front End', price: '$1,499' },
+      { name: 'Full Vehicle Wrap', price: '$4,999' },
+    ],
+  },
+  'full-detail': {
+    title: 'Full Detail Package',
+    description: 'Our most comprehensive detailing service covers every inch of your vehicle inside and out. The ultimate treatment for vehicles that deserve nothing less than perfection.',
+    heroImage: car8,
+    price: 'From $499',
+    priceNote: 'Starting price for sedans. Includes interior + exterior.',
+    features: [
+      'Complete exterior hand wash and decontamination',
+      'Clay bar treatment',
+      'Machine polish and wax/sealant',
+      'Full interior deep clean and conditioning',
+      'Leather treatment and fabric shampooing',
+      'Engine bay cleaning and dressing',
+      'Wheel and tire detailing',
+      'Headlight restoration',
+      'Chrome and trim polishing',
+      'White glove final inspection',
+    ],
+    packages: [
+      { name: 'Essential Full Detail', price: '$499' },
+      { name: 'Executive Full Detail', price: '$699' },
+      { name: 'Concierge Full Detail', price: '$999' },
+    ],
+  },
+  'engine-bay': {
+    title: 'Engine Bay Detailing',
+    description: 'Complete engine bay cleaning and dressing to make your engine compartment look showroom-new. Safe products and careful technique protect all components.',
+    heroImage: car6,
+    price: 'From $149',
+    priceNote: 'Add-on pricing available with other services',
+    features: [
+      'Safe engine bay degreasing',
+      'Detailed brush cleaning of all components',
+      'Plastic and rubber conditioning',
+      'Metal and chrome polishing',
+      'Hose and wire loom dressing',
+      'Protective coating application',
+    ],
+  },
+  'headlight-restoration': {
+    title: 'Headlight Restoration',
+    description: 'Professional oxidation removal, wet sanding, and UV sealing to restore your headlights to crystal clarity. Improves appearance and nighttime visibility.',
+    heroImage: car1,
+    price: 'From $99',
+    priceNote: 'Per pair. Severe oxidation may require additional work.',
+    features: [
+      'Oxidation and haze removal',
+      'Multi-stage wet sanding',
+      'Machine polishing to clarity',
+      'UV sealant coating application',
+      'Improved nighttime visibility',
+      'Restored factory appearance',
+    ],
+  },
+  'maintenance-plans': {
+    title: 'Maintenance Plans',
+    description: 'Keep your vehicle looking its best year-round with scheduled maintenance washes, touch-ups, and protection reapplication at a discounted rate.',
+    heroImage: car3,
+    price: 'From $149/mo',
+    priceNote: 'Monthly or quarterly plans available',
+    features: [
+      'Scheduled maintenance washes',
+      'Ceramic coating maintenance and top-ups',
+      'Interior wipe-downs and vacuum',
+      'Tire and wheel cleaning',
+      'Bird dropping and sap removal',
+      'Priority booking and scheduling',
+      'Discounted add-on services',
+      'Transferable to new vehicles',
+    ],
+    packages: [
+      { name: 'Monthly Basic', price: '$149/mo' },
+      { name: 'Monthly Premium', price: '$249/mo' },
+      { name: 'Quarterly Full Detail', price: '$399/qtr' },
+    ],
+  },
+};

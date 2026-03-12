@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useScrollAnimation, fadeInUp, staggerContainer } from '../hooks/useScrollAnimation';
+import car6 from '../assets/images/cars/car6.JPEG';
 
 // Accessible SVG icons with aria-label
 const ServiceIcon = ({ type, className = "w-10 h-10 sm:w-12 sm:h-12" }) => {
@@ -26,7 +27,7 @@ const ServiceIcon = ({ type, className = "w-10 h-10 sm:w-12 sm:h-12" }) => {
 };
 
 // Mobile-first service card following FRD guidelines
-const ServiceCard = ({ iconType, iconLabel, title, description, features }) => {
+const ServiceCard = ({ iconType, iconLabel, title, description, features, slug }) => {
   return (
     <motion.div
       variants={fadeInUp}
@@ -61,7 +62,7 @@ const ServiceCard = ({ iconType, iconLabel, title, description, features }) => {
 
       {/* Learn More Link */}
       <Link
-        to="/services"
+        to={slug ? `/services/${slug}` : '/services'}
         className="inline-flex items-center text-luxury-gold hover:text-luxury-dark-gold focus:text-luxury-dark-gold transition-colors duration-300 uppercase text-xs tracking-wider font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-luxury-gold rounded"
       >
         Learn More
@@ -90,6 +91,7 @@ const FeaturedServices = () => {
       iconType: 'car',
       iconLabel: 'Luxury automobile icon',
       title: 'Luxury Auto Detailing',
+      slug: 'full-detail',
       description: 'Meticulous care for exotic sports cars and luxury sedans.',
       features: [
         'Paint correction & ceramic coating',
@@ -101,6 +103,7 @@ const FeaturedServices = () => {
       iconType: 'paint',
       iconLabel: 'Paint correction icon',
       title: 'Paint Correction',
+      slug: 'paint-correction',
       description: 'Restore your vehicle\'s finish to showroom perfection.',
       features: [
         'Multi-stage paint correction',
@@ -112,6 +115,7 @@ const FeaturedServices = () => {
       iconType: 'star',
       iconLabel: 'Premium star icon',
       title: 'Premium Protection',
+      slug: 'ceramic-coating',
       description: 'Long-lasting protection packages that preserve your investment.',
       features: [
         'Multi-year ceramic coating',
@@ -122,13 +126,12 @@ const FeaturedServices = () => {
   ];
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 bg-luxury-black relative" aria-labelledby="services-heading">
-      {/* Background Pattern - Subtle */}
-      <div className="absolute inset-0 opacity-5" aria-hidden="true">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.1) 35px, rgba(212, 175, 55, 0.1) 70px)'
-        }}></div>
+    <section className="py-8 sm:py-12 md:py-16 relative" aria-labelledby="services-heading">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img src={car6} alt="" className="w-full h-full object-cover object-center" loading="lazy" aria-hidden="true" />
       </div>
+      <div className="absolute inset-0 bg-luxury-black/90"></div>
 
       <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 relative z-10">
         {/* Section Header - Mobile-first responsive spacing */}
