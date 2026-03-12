@@ -9,7 +9,7 @@ function NotFound() {
     <div className="min-h-screen bg-black flex flex-col">
       <SEO
         title="Page Not Found"
-        description="The page you're looking for doesn't exist. Return to Elite Detailing homepage or browse our luxury auto and jet detailing services."
+        description="The page you're looking for doesn't exist. Return to Elite Detailing homepage or browse our luxury auto detailing services."
       />
       <Navbar />
 

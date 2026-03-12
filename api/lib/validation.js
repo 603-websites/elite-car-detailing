@@ -257,7 +257,7 @@ export const validateTime = (time) => {
  * @returns {Object} - { valid: boolean, sanitized: string, error?: string }
  */
 export const validateServiceCategory = (category) => {
-  const allowedCategories = ['auto', 'jet'];
+  const allowedCategories = ['auto'];
 
   if (!category || typeof category !== 'string') {
     return { valid: false, error: 'Service category is required' };

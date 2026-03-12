@@ -20,7 +20,8 @@ const Booking = () => {
       name: '',
       email: '',
       phone: '',
-      vehicleInfo: ''
+      vehicleInfo: '',
+      smsConsent: false
     }
   });
 
@@ -108,7 +109,7 @@ const Booking = () => {
     <div className="min-h-screen bg-luxury-black">
       <SEO
         title="Book Your Appointment"
-        description="Schedule your luxury auto or private jet detailing appointment online. Choose from our premium detailing packages and select a convenient time."
+        description="Schedule your luxury auto detailing appointment online. Choose from our premium detailing packages and select a convenient time."
         canonical="https://elite-detailing-website.vercel.app/booking"
       />
       <Navbar />
@@ -229,7 +230,7 @@ const Booking = () => {
                         totalPrice: 0,
                         date: null,
                         time: null,
-                        customer: { name: '', email: '', phone: '', vehicleInfo: '' }
+                        customer: { name: '', email: '', phone: '', vehicleInfo: '', smsConsent: false }
                       });
                       setCurrentStep(1);
                     }}
@@ -354,7 +355,7 @@ const Booking = () => {
 
                         <div>
                           <label className="block text-luxury-gold text-sm font-semibold mb-2 uppercase tracking-wider">
-                            Vehicle/Aircraft Information
+                            Vehicle Information
                           </label>
                           <textarea
                             value={bookingData.customer.vehicleInfo}
@@ -363,6 +364,26 @@ const Booking = () => {
                             className="w-full bg-luxury-black border-2 border-luxury-gold/20 text-luxury-white p-3 rounded-sm focus:border-luxury-gold focus:outline-none"
                             placeholder="Make, model, year, color, special notes..."
                           />
+                        </div>
+
+                        {/* SMS Consent */}
+                        <div className="border border-luxury-gold/20 rounded-sm p-4 bg-luxury-black/50">
+                          <label className="flex items-start gap-3 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={bookingData.customer.smsConsent}
+                              onChange={(e) => handleInputChange('smsConsent', e.target.checked)}
+                              className="w-5 h-5 mt-0.5 rounded border-luxury-gold/20 text-luxury-gold focus:ring-luxury-gold focus:ring-2 cursor-pointer flex-shrink-0"
+                            />
+                            <div>
+                              <span className="text-luxury-white text-sm font-medium">
+                                Send me SMS reminders
+                              </span>
+                              <p className="text-luxury-white/50 text-xs mt-1">
+                                Receive a text reminder 24 hours before your appointment. You can reply to confirm, reschedule, or cancel. Standard message rates may apply.
+                              </p>
+                            </div>
+                          </label>
                         </div>
 
                         {/* Error Display - Accessible alert */}

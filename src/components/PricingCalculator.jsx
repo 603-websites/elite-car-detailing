@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 const PricingCalculator = ({ onPriceChange, onServiceSelect }) => {
-  const [selectedCategory, setSelectedCategory] = useState('auto');
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [selectedAddons, setSelectedAddons] = useState([]);
   const [vehicleSize, setVehicleSize] = useState('medium');
 
   // Service packages with base pricing
-  const packages = {
-    auto: [
-      { id: 'auto-basic', name: 'Essential Detail', basePrice: 199, description: 'Basic wash & interior' },
-      { id: 'auto-premium', name: 'Executive Detail', basePrice: 399, description: 'Polish, wax, deep clean', popular: true },
-      { id: 'auto-luxury', name: 'Concierge Detail', basePrice: 799, description: 'Paint correction, ceramic coating' }
-    ],
-    jet: [
-      { id: 'jet-light', name: 'Light Aircraft Detail', basePrice: 1499, description: 'Small planes & turboprops' },
-      { id: 'jet-executive', name: 'Executive Jet Detail', basePrice: 3999, description: 'Mid-size private jets', popular: true },
-      { id: 'jet-fleet', name: 'Fleet & Large Aircraft', basePrice: 8999, description: 'Large jets & commercial' }
-    ]
-  };
+  const packages = [
+    { id: 'auto-basic', name: 'Essential Detail', basePrice: 199, description: 'Basic wash & interior' },
+    { id: 'auto-premium', name: 'Executive Detail', basePrice: 399, description: 'Polish, wax, deep clean', popular: true },
+    { id: 'auto-luxury', name: 'Concierge Detail', basePrice: 799, description: 'Paint correction, ceramic coating' }
+  ];
 
   // Add-on services
   const addons = [
@@ -42,7 +34,7 @@ const PricingCalculator = ({ onPriceChange, onServiceSelect }) => {
   const calculateTotal = () => {
     if (!selectedPackage) return 0;
 
-    const pkg = packages[selectedCategory].find(p => p.id === selectedPackage);
+    const pkg = packages.find(p => p.id === selectedPackage);
     const basePrice = pkg ? pkg.basePrice : 0;
 
     const sizeAdjustedPrice = basePrice * sizeMultipliers[vehicleSize];
@@ -71,65 +63,28 @@ const PricingCalculator = ({ onPriceChange, onServiceSelect }) => {
       onPriceChange(total);
     }
     if (onServiceSelect && selectedPackage) {
-      const pkg = packages[selectedCategory].find(p => p.id === selectedPackage);
+      const pkg = packages.find(p => p.id === selectedPackage);
       onServiceSelect({
-        category: selectedCategory,
+        category: 'auto',
         package: pkg,
         addons: selectedAddons.map(id => addons.find(a => a.id === id)),
         vehicleSize,
         total
       });
     }
-  }, [selectedCategory, selectedPackage, selectedAddons, vehicleSize]);
+  }, [selectedPackage, selectedAddons, vehicleSize]);
 
   const total = calculateTotal();
 
   return (
     <div className="space-y-8">
-      {/* Category Selection */}
-      <div>
-        <label className="block text-luxury-gold text-sm font-semibold mb-3 uppercase tracking-wider">
-          Service Category
-        </label>
-        <div className="grid grid-cols-2 gap-4">
-          <button
-            onClick={() => {
-              setSelectedCategory('auto');
-              setSelectedPackage(null);
-            }}
-            className={`p-4 border-2 rounded-sm transition-all duration-300 ${
-              selectedCategory === 'auto'
-                ? 'border-luxury-gold bg-luxury-gold/10 text-luxury-gold'
-                : 'border-luxury-gold/20 text-luxury-white hover:border-luxury-gold'
-            }`}
-          >
-            <div className="text-2xl mb-2" role="img" aria-label="Car">🚗</div>
-            <div className="font-semibold">Luxury Auto</div>
-          </button>
-          <button
-            onClick={() => {
-              setSelectedCategory('jet');
-              setSelectedPackage(null);
-            }}
-            className={`p-4 border-2 rounded-sm transition-all duration-300 ${
-              selectedCategory === 'jet'
-                ? 'border-luxury-gold bg-luxury-gold/10 text-luxury-gold'
-                : 'border-luxury-gold/20 text-luxury-white hover:border-luxury-gold'
-            }`}
-          >
-            <div className="text-2xl mb-2" role="img" aria-label="Airplane">✈️</div>
-            <div className="font-semibold">Private Jet</div>
-          </button>
-        </div>
-      </div>
-
       {/* Package Selection */}
       <div>
         <label className="block text-luxury-gold text-sm font-semibold mb-3 uppercase tracking-wider">
           Select Package
         </label>
         <div className="space-y-3">
-          {packages[selectedCategory].map(pkg => (
+          {packages.map(pkg => (
             <button
               key={pkg.id}
               onClick={() => setSelectedPackage(pkg.id)}
@@ -162,7 +117,7 @@ const PricingCalculator = ({ onPriceChange, onServiceSelect }) => {
       {selectedPackage && (
         <div>
           <label className="block text-luxury-gold text-sm font-semibold mb-3 uppercase tracking-wider">
-            {selectedCategory === 'auto' ? 'Vehicle Size' : 'Aircraft Size'}
+            Vehicle Size
           </label>
           <select
             value={vehicleSize}
@@ -211,11 +166,11 @@ const PricingCalculator = ({ onPriceChange, onServiceSelect }) => {
           <div className="space-y-2 mb-4">
             <div className="flex justify-between text-luxury-white/70">
               <span>Base Package</span>
-              <span>${packages[selectedCategory].find(p => p.id === selectedPackage)?.basePrice}</span>
+              <span>${packages.find(p => p.id === selectedPackage)?.basePrice}</span>
             </div>
             <div className="flex justify-between text-luxury-white/70">
               <span>Size Adjustment ({vehicleSize})</span>
-              <span>×{sizeMultipliers[vehicleSize]}</span>
+              <span>&times;{sizeMultipliers[vehicleSize]}</span>
             </div>
             {selectedAddons.length > 0 && (
               <div className="flex justify-between text-luxury-white/70">

@@ -131,7 +131,7 @@ export const generateBookingConfirmationEmail = async (bookingData) => {
 
       <div class="detail-row">
         <span class="label">Category:</span>
-        <span class="value">${bookingData.service_category === 'auto' ? 'Luxury Auto Detailing' : 'Private Jet Detailing'}</span>
+        <span class="value">Luxury Auto Detailing</span>
       </div>
 
       <div class="detail-row">
@@ -163,7 +163,7 @@ export const generateBookingConfirmationEmail = async (bookingData) => {
     <ul style="color: #666;">
       <li>We'll send you a reminder 24 hours before your appointment</li>
       <li>Please arrive 5-10 minutes early</li>
-      <li>Our team will inspect your ${bookingData.service_category === 'auto' ? 'vehicle' : 'aircraft'} and confirm the final price</li>
+      <li>Our team will inspect your vehicle and confirm the final price</li>
       <li>Feel free to contact us if you have any questions or need to reschedule</li>
     </ul>
 

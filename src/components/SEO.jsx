@@ -12,8 +12,8 @@ const SEO = ({
   ogImage = 'https://elite-detailing-website.vercel.app/og-image.jpg',
 }) => {
   const siteTitle = 'Elite Detailing';
-  const fullTitle = title ? `${title} | ${siteTitle}` : `${siteTitle} | Luxury Auto & Private Jet Detailing in New England`;
-  const defaultDescription = 'Professional luxury auto and private jet detailing services across New England. Ceramic coating, paint correction, and premium detailing packages.';
+  const fullTitle = title ? `${title} | ${siteTitle}` : `${siteTitle} | Premium Auto Detailing in New England`;
+  const defaultDescription = 'Professional luxury auto detailing services across New England. Ceramic coating, paint correction, and premium detailing packages.';
 
   useEffect(() => {
     // Update document title

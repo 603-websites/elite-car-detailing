@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Debounce utility for scroll performance
 const debounce = (func, wait) => {
@@ -8,6 +9,35 @@ const debounce = (func, wait) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait);
   };
+};
+
+const mobileMenuVariants = {
+  hidden: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      height: { duration: 0.3, ease: 'easeInOut' },
+      opacity: { duration: 0.2 },
+    }
+  },
+  visible: {
+    height: 'auto',
+    opacity: 1,
+    transition: {
+      height: { duration: 0.3, ease: 'easeInOut' },
+      opacity: { duration: 0.2, delay: 0.1 },
+    }
+  }
+};
+
+const mobileItemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: { delay: i * 0.05, duration: 0.3, ease: 'easeOut' }
+  }),
+  exit: { opacity: 0, x: -20, transition: { duration: 0.15 } }
 };
 
 const Navbar = () => {
@@ -118,10 +148,16 @@ const Navbar = () => {
                 key={link.name}
                 to={link.href}
                 role="menuitem"
-                className="text-luxury-white hover:text-luxury-gold focus-visible:text-luxury-gold transition-colors duration-300 uppercase text-sm tracking-wider font-medium focus-visible:ring-2 focus-visible:ring-luxury-gold rounded px-1"
+                className="relative text-luxury-white hover:text-luxury-gold focus-visible:text-luxury-gold transition-colors duration-300 uppercase text-sm tracking-wider font-medium focus-visible:ring-2 focus-visible:ring-luxury-gold rounded px-1 py-1 group"
                 aria-current={location.pathname === link.href ? 'page' : undefined}
               >
                 {link.name}
+                {/* Gold underline slide for active link */}
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-luxury-gold transition-all duration-300 ${
+                    location.pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                ></span>
               </Link>
             ))}
           </div>
@@ -163,51 +199,72 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu - Accessible dropdown */}
-        <div
-          id="mobile-menu"
-          ref={menuRef}
-          className={`md:hidden absolute left-0 right-0 top-full bg-luxury-black border-t border-luxury-gold/20 shadow-2xl transition-all duration-300 ${
-            mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-          }`}
-          role="menu"
-          aria-orientation="vertical"
-          aria-hidden={!mobileMenuOpen}
-        >
-          <div className="container mx-auto px-4 sm:px-6 py-6">
-            <div className="flex flex-col space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  role="menuitem"
-                  tabIndex={mobileMenuOpen ? 0 : -1}
-                  className="text-luxury-white hover:text-luxury-gold focus-visible:text-luxury-gold transition-colors duration-300 uppercase text-sm tracking-wider font-medium py-3 px-4 rounded hover:bg-luxury-gold/10 focus-visible:bg-luxury-gold/10 border border-transparent hover:border-luxury-gold/30 focus-visible:border-luxury-gold/30"
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-current={location.pathname === link.href ? 'page' : undefined}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="pt-2">
-                <Link
-                  to="/booking"
-                  tabIndex={mobileMenuOpen ? 0 : -1}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block"
-                >
-                  <button
-                    role="menuitem"
-                    className="btn-primary w-full"
-                    tabIndex={-1}
+        {/* Mobile Menu - Animated with AnimatePresence */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              id="mobile-menu"
+              ref={menuRef}
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="md:hidden absolute left-0 right-0 top-full bg-luxury-black border-t border-luxury-gold/20 shadow-2xl overflow-hidden"
+              role="menu"
+              aria-orientation="vertical"
+              aria-hidden={!mobileMenuOpen}
+            >
+              <div className="container mx-auto px-4 sm:px-6 py-6">
+                <div className="flex flex-col space-y-2">
+                  {navLinks.map((link, index) => (
+                    <motion.div
+                      key={link.name}
+                      custom={index}
+                      variants={mobileItemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      <Link
+                        to={link.href}
+                        role="menuitem"
+                        tabIndex={mobileMenuOpen ? 0 : -1}
+                        className="block text-luxury-white hover:text-luxury-gold focus-visible:text-luxury-gold transition-colors duration-300 uppercase text-sm tracking-wider font-medium py-3 px-4 rounded hover:bg-luxury-gold/10 focus-visible:bg-luxury-gold/10 border border-transparent hover:border-luxury-gold/30 focus-visible:border-luxury-gold/30"
+                        onClick={() => setMobileMenuOpen(false)}
+                        aria-current={location.pathname === link.href ? 'page' : undefined}
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+                  <motion.div
+                    custom={navLinks.length}
+                    variants={mobileItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="pt-2"
                   >
-                    Book Now
-                  </button>
-                </Link>
+                    <Link
+                      to="/booking"
+                      tabIndex={mobileMenuOpen ? 0 : -1}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block"
+                    >
+                      <button
+                        role="menuitem"
+                        className="btn-primary w-full"
+                        tabIndex={-1}
+                      >
+                        Book Now
+                      </button>
+                    </Link>
+                  </motion.div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

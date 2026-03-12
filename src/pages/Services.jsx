@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ServicePackage from '../components/ServicePackage';
 import BeforeAfterGallery from '../components/BeforeAfterGallery';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import jet1 from '../assets/images/jets/jet1.jpeg';
+import car5 from '../assets/images/cars/car5.jpg';
 
 const Services = () => {
-  const [selectedCategory, setSelectedCategory] = useState('auto');
-
   // Auto Detailing Packages
   const autoPackages = [
     {
@@ -65,63 +63,6 @@ const Services = () => {
     }
   ];
 
-  // Private Jet Packages
-  const jetPackages = [
-    {
-      tier: 'Essential',
-      title: 'Light Aircraft Detail',
-      price: '$1,499',
-      priceNote: 'starting',
-      vehicleType: 'Cessna, Light Turboprops',
-      features: [
-        'Exterior hand wash & wax',
-        'Window & windscreen cleaning',
-        'Cabin vacuum & sanitization',
-        'Leather seat cleaning',
-        'Galley & lavatory detail',
-        'Control panel cleaning'
-      ]
-    },
-    {
-      tier: 'Premium',
-      title: 'Executive Jet Detail',
-      price: '$3,999',
-      priceNote: 'starting',
-      vehicleType: 'Mid-Size Private Jets',
-      popular: true,
-      features: [
-        'Everything in Light Aircraft Detail',
-        'Paint decontamination & clay bar',
-        'Multi-stage paint correction',
-        'Ceramic coating application',
-        'Deep cabin shampooing',
-        'Premium leather conditioning',
-        'Cockpit instrument detailing',
-        'Brightwork polishing',
-        'UV protection treatment'
-      ]
-    },
-    {
-      tier: 'Elite',
-      title: 'Fleet & Large Aircraft',
-      price: '$8,999',
-      priceNote: 'starting',
-      vehicleType: 'Large Jets & Commercial Aircraft',
-      features: [
-        'Everything in Executive Jet Detail',
-        'Complete exterior restoration',
-        'Aircraft-grade ceramic coating',
-        'Full cabin refurbishment',
-        'Avionics cleaning & protection',
-        'Corrosion treatment',
-        'Engine cowling detail',
-        'Landing gear cleaning',
-        'FAA-compliant products',
-        'Expedited turnaround available'
-      ]
-    }
-  ];
-
   // Add-on Services
   const addOnServices = [
     {
@@ -170,19 +111,9 @@ const Services = () => {
       description: 'Multi-stage correction with ceramic coating'
     },
     {
-      icon: '✈️',
-      title: 'Gulfstream G650 - Full Detail',
-      description: 'Complete exterior & interior restoration'
-    },
-    {
       icon: '🏎️',
       title: 'Lamborghini Aventador - Concierge Detail',
       description: 'Premium detail with paint protection film'
-    },
-    {
-      icon: '🛩️',
-      title: 'Citation X - Executive Jet Detail',
-      description: 'Ceramic coating & cabin refurbishment'
     },
     {
       icon: '🚙',
@@ -190,9 +121,19 @@ const Services = () => {
       description: 'Interior restoration & exterior ceramic coating'
     },
     {
-      icon: '🛫',
-      title: 'Bombardier Global 7500',
-      description: 'Fleet detail with expedited turnaround'
+      icon: '🏎️',
+      title: 'Porsche 911 GT3 - Full Detail',
+      description: 'Complete paint correction and ceramic coating'
+    },
+    {
+      icon: '🚗',
+      title: 'Mercedes S-Class - Interior Restoration',
+      description: 'Deep leather conditioning and interior detail'
+    },
+    {
+      icon: '🚙',
+      title: 'BMW X5 - Executive Detail',
+      description: 'Full exterior and interior premium service'
     }
   ];
 
@@ -200,7 +141,7 @@ const Services = () => {
     <div className="min-h-screen bg-luxury-black">
       <SEO
         title="Our Services"
-        description="Explore our luxury auto and private jet detailing packages. From essential details to concierge-level service, we offer ceramic coating, paint correction, and premium protection for your vehicle or aircraft."
+        description="Explore our luxury auto detailing packages. From essential details to concierge-level service, we offer ceramic coating, paint correction, and premium protection for your vehicle."
         canonical="https://elite-detailing-website.vercel.app/services"
       />
       <Navbar />
@@ -211,8 +152,8 @@ const Services = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-luxury-black via-luxury-black/85 to-transparent z-10"></div>
         <div className="absolute inset-0">
           <img
-            src={jet1}
-            alt="Private jet detailing"
+            src={car5}
+            alt="Luxury vehicle detailing"
             className="w-full h-full object-cover object-center"
             loading="eager"
           />
@@ -230,48 +171,20 @@ const Services = () => {
               </span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-luxury-white/70 leading-relaxed px-2">
-              From luxury automobiles to private jets, we offer comprehensive detailing
-              solutions tailored to your needs. Each package is designed to deliver
-              exceptional results with meticulous attention to detail.
+              We offer comprehensive auto detailing solutions tailored to your needs.
+              Each package is designed to deliver exceptional results with meticulous
+              attention to detail.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Category Selector - Stack on mobile, side-by-side on tablet+ */}
-      <section className="py-8 sm:py-10 md:py-12 bg-luxury-dark-gray border-y border-luxury-gold/20">
-        <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 max-w-2xl mx-auto">
-            <button
-              onClick={() => setSelectedCategory('auto')}
-              className={`px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-sm uppercase tracking-wider text-xs sm:text-sm font-semibold transition-all duration-300 ${
-                selectedCategory === 'auto'
-                  ? 'bg-luxury-gold text-luxury-black'
-                  : 'bg-transparent border-2 border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black'
-              }`}
-            >
-              <span className="hidden sm:inline">Luxury </span>Auto Detailing
-            </button>
-            <button
-              onClick={() => setSelectedCategory('jet')}
-              className={`px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-sm uppercase tracking-wider text-xs sm:text-sm font-semibold transition-all duration-300 ${
-                selectedCategory === 'jet'
-                  ? 'bg-luxury-gold text-luxury-black'
-                  : 'bg-transparent border-2 border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black'
-              }`}
-            >
-              <span className="hidden sm:inline">Private </span>Jet Detailing
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Packages - Responsive grid: 1 col mobile, 2 cols tablet, 3 cols desktop */}
+      {/* Service Packages */}
       <section className="py-8 sm:py-12 md:py-16 bg-luxury-black">
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-luxury-white mb-3 sm:mb-4 px-2">
-              {selectedCategory === 'auto' ? 'Auto Detailing Packages' : 'Private Jet Detailing Packages'}
+              Auto Detailing Packages
             </h2>
             <p className="text-sm sm:text-base text-luxury-white/60 max-w-2xl mx-auto px-4">
               Choose the package that best suits your vehicle's needs. All packages include
@@ -280,7 +193,7 @@ const Services = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
-            {(selectedCategory === 'auto' ? autoPackages : jetPackages).map((pkg, index) => (
+            {autoPackages.map((pkg, index) => (
               <ServicePackage key={index} {...pkg} />
             ))}
           </div>
@@ -354,7 +267,7 @@ const Services = () => {
           {/* Note about placeholder images */}
           <div className="mt-12 text-center bg-luxury-dark-gray border border-luxury-gold/20 p-6 max-w-3xl mx-auto">
             <p className="text-luxury-gold font-semibold mb-2">
-              📸 Gallery Images Coming Soon
+              Gallery Images Coming Soon
             </p>
             <p className="text-luxury-white/60 text-sm">
               High-resolution before/after photos of our completed projects will be added here.

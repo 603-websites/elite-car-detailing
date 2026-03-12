@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { submitContactForm } from '../lib/bookingService';
+import { useScrollAnimation, fadeInUp, staggerContainer, scaleIn } from '../hooks/useScrollAnimation';
 
 // Import team images
 import wesleyImg from '../assets/images/team/wesley-baccay.JPG';
@@ -118,7 +120,12 @@ function Contact() {
             {/* Team Grid - 4 cols on all breakpoints */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
               {teamMembers.map((member, index) => (
-                <div key={index} className="group">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5, ease: 'easeOut' }}
+                  className="group">
                   <div className="aspect-square overflow-hidden bg-black/50 rounded-lg mb-2 border border-luxury-gold/20 group-hover:border-luxury-gold transition-colors">
                     <img
                       src={member.image}
@@ -144,7 +151,7 @@ function Contact() {
                       </a>
                     </div>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -265,7 +272,7 @@ function Contact() {
                 required
                 rows="6"
                 className="w-full px-4 py-3 bg-black border border-luxury-gold/20 rounded-lg text-white focus:border-luxury-gold focus:outline-none transition-colors resize-none"
-                placeholder="Tell us about your vehicle or aircraft and what services you're interested in..."
+                placeholder="Tell us about your vehicle and what services you're interested in..."
               ></textarea>
             </div>
 

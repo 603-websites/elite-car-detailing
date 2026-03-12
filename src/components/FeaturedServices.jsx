@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useScrollAnimation, fadeInUp, staggerContainer } from '../hooks/useScrollAnimation';
 
 // Accessible SVG icons with aria-label
 const ServiceIcon = ({ type, className = "w-10 h-10 sm:w-12 sm:h-12" }) => {
@@ -9,9 +11,9 @@ const ServiceIcon = ({ type, className = "w-10 h-10 sm:w-12 sm:h-12" }) => {
         <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
       </svg>
     ),
-    jet: (
+    paint: (
       <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+        <path d="M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z"/>
       </svg>
     ),
     star: (
@@ -26,7 +28,10 @@ const ServiceIcon = ({ type, className = "w-10 h-10 sm:w-12 sm:h-12" }) => {
 // Mobile-first service card following FRD guidelines
 const ServiceCard = ({ iconType, iconLabel, title, description, features }) => {
   return (
-    <div className="group bg-luxury-dark-gray hover:bg-luxury-medium-gray transition-all duration-300 p-4 sm:p-6 border border-luxury-gold/20 hover:border-luxury-gold rounded-sm focus-within:border-luxury-gold">
+    <motion.div
+      variants={fadeInUp}
+      className="group bg-luxury-dark-gray hover:bg-luxury-medium-gray transition-all duration-300 p-4 sm:p-6 border border-luxury-gold/20 hover:border-luxury-gold rounded-sm focus-within:border-luxury-gold"
+    >
       {/* Icon - Responsive sizing with accessible label */}
       <div className="text-luxury-gold mb-3 sm:mb-4" role="img" aria-label={iconLabel}>
         <ServiceIcon type={iconType} className="w-10 h-10 sm:w-12 sm:h-12" />
@@ -73,11 +78,13 @@ const ServiceCard = ({ iconType, iconLabel, title, description, features }) => {
           <path d="M9 5l7 7-7 7"></path>
         </svg>
       </Link>
-    </div>
+    </motion.div>
   );
 };
 
 const FeaturedServices = () => {
+  const { ref, isInView } = useScrollAnimation();
+
   const services = [
     {
       iconType: 'car',
@@ -91,14 +98,14 @@ const FeaturedServices = () => {
       ]
     },
     {
-      iconType: 'jet',
-      iconLabel: 'Private jet icon',
-      title: 'Private Jet Detailing',
-      description: 'Exclusive detailing for private aircraft with certified expertise.',
+      iconType: 'paint',
+      iconLabel: 'Paint correction icon',
+      title: 'Paint Correction',
+      description: 'Restore your vehicle\'s finish to showroom perfection.',
       features: [
-        'Exterior wash & polish',
-        'Cabin deep cleaning',
-        'Leather treatment'
+        'Multi-stage paint correction',
+        'Swirl & scratch removal',
+        'High-gloss finish restoration'
       ]
     },
     {
@@ -140,11 +147,17 @@ const FeaturedServices = () => {
         </div>
 
         {/* Services Grid - FRD: Mobile 1 col, Tablet 2 col, Desktop 3 col */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <motion.div
+          ref={ref}
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+        >
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
-        </div>
+        </motion.div>
 
         {/* View All Services Button - Full width on mobile, auto on larger */}
         <div className="text-center mt-6 sm:mt-8 md:mt-10">

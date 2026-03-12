@@ -25,7 +25,7 @@ function TermsOfService() {
             <section>
               <h2 className="text-xl font-semibold text-luxury-gold mb-3">1. Services</h2>
               <p>
-                Elite Detailing provides luxury auto and private jet detailing services across New
+                Elite Detailing provides luxury auto detailing services across New
                 England (MA, NH, RI, CT, NY). All services are performed by our trained team members
                 using professional-grade products and equipment.
               </p>
@@ -62,7 +62,7 @@ function TermsOfService() {
             <section>
               <h2 className="text-xl font-semibold text-luxury-gold mb-3">5. Liability</h2>
               <ul className="list-disc list-inside space-y-2 text-luxury-white/70">
-                <li>We exercise the utmost care when servicing your vehicle or aircraft.</li>
+                <li>We exercise the utmost care when servicing your vehicle.</li>
                 <li>We are not responsible for pre-existing damage, paint defects, or mechanical issues.</li>
                 <li>Any concerns about damage must be reported within 24 hours of service completion.</li>
                 <li>Our liability is limited to the cost of the service provided.</li>

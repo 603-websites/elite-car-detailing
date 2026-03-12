@@ -3,9 +3,9 @@ import React from 'react';
 const TrustIndicators = () => {
   // Condensed stats - FRD: Keep content essential on mobile
   const stats = [
-    { number: '4', label: 'NE Members', icon: '👥', iconLabel: 'Team members' },
-    { number: 'RWU', label: 'Alumni Team', icon: '🎓', iconLabel: 'Graduation cap' },
-    { number: '100%', label: 'Dedicated', icon: '⭐', iconLabel: 'Star rating' }
+    { number: '5', label: 'States Served', icon: '📍', iconLabel: 'Location pin' },
+    { number: '5-Star', label: 'Service', icon: '⭐', iconLabel: 'Star rating' },
+    { number: '100%', label: 'Satisfaction', icon: '✅', iconLabel: 'Check mark' }
   ];
 
   return (
@@ -21,7 +21,7 @@ const TrustIndicators = () => {
             Why Choose Us
           </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-luxury-white mb-3 sm:mb-4">
-            Former Athletes, <span className="text-luxury-gold">Elite Standards</span>
+            Premium Care, <span className="text-luxury-gold">Elite Standards</span>
           </h2>
           <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-luxury-gold mx-auto"></div>
         </div>
@@ -67,7 +67,7 @@ const TrustIndicators = () => {
 
             {/* Quote - FRD: 16px minimum body text, 1.6 line height */}
             <p className="text-sm sm:text-base md:text-lg text-luxury-white/80 mb-4 sm:mb-6 leading-relaxed italic relative z-10">
-              "The discipline and precision we developed as athletes translates directly to how we approach every detail. Our team brings the same dedication and work ethic to every vehicle we service."
+              "Every vehicle we touch receives the highest level of care and attention. Our team brings unmatched dedication and precision to every detail, every time."
             </p>
 
             {/* Author */}
@@ -76,7 +76,7 @@ const TrustIndicators = () => {
                 Elite Detailing Team
               </p>
               <p className="text-luxury-white/50 text-xs sm:text-sm">
-                Former RWU Athletes
+                Professional Detailing Team
               </p>
             </div>
           </div>

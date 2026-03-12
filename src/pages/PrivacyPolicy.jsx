@@ -27,7 +27,7 @@ function PrivacyPolicy() {
               <p className="mb-3">When you book a service or contact us, we may collect:</p>
               <ul className="list-disc list-inside space-y-1 text-luxury-white/70">
                 <li>Name and contact information (email, phone number)</li>
-                <li>Vehicle or aircraft details relevant to your service</li>
+                <li>Vehicle details relevant to your service</li>
                 <li>Appointment date and time preferences</li>
                 <li>Service location address</li>
                 <li>Payment information (processed securely by our payment provider)</li>

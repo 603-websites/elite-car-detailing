@@ -153,14 +153,9 @@ export default async function handler(req, res) {
 
     // Sanitize package name (prevent XSS)
     const allowedPackages = [
-      // Auto packages
       'Essential Detail',
       'Executive Detail',
-      'Concierge Detail',
-      // Jet packages
-      'Light Aircraft Detail',
-      'Executive Jet Detail',
-      'Fleet & Large Aircraft'
+      'Concierge Detail'
     ];
 
     if (!allowedPackages.includes(bookingData.package_name)) {
@@ -198,6 +193,8 @@ export default async function handler(req, res) {
       total_price: validations.price.sanitized,
       vehicle_info: vehicleInfo,
       addons: JSON.stringify(sanitizedAddons),
+      sms_consent: bookingData.sms_consent === true,
+      sms_reminder_sent: false,
       status: 'pending',
       created_at: new Date().toISOString()
     };
@@ -226,6 +223,28 @@ export default async function handler(req, res) {
       date: booking.appointment_date,
       ip: getClientIP(req)
     });
+
+    // Send SMS confirmation if consented
+    if (booking.sms_consent && booking.customer_phone) {
+      try {
+        const { sendSMS, formatPhoneE164, fillTemplate, getTemplate } = await import('../lib/telnyx.js');
+        const template = await getTemplate('booking_confirmation');
+        if (template) {
+          const dateFormatted = new Date(booking.appointment_date).toLocaleDateString('en-US', {
+            weekday: 'short', month: 'short', day: 'numeric',
+          });
+          const message = fillTemplate(template, {
+            name: booking.customer_name.split(' ')[0],
+            date: dateFormatted,
+            time: booking.appointment_time,
+          });
+          const phone = formatPhoneE164(booking.customer_phone);
+          await sendSMS(phone, message, data.id);
+        }
+      } catch (smsError) {
+        console.error('SMS confirmation error (non-critical):', smsError);
+      }
+    }
 
     // Prepare success response
     const successResponse = {

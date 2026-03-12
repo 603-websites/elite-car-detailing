@@ -47,3 +47,17 @@
     @apply bg-luxury-gold/30 text-luxury-black/50 cursor-not-allowed;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}

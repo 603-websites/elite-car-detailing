@@ -28,7 +28,8 @@ export const createBooking = async (bookingData) => {
       customer_name: bookingData.customer.name,
       customer_email: bookingData.customer.email,
       customer_phone: bookingData.customer.phone,
-      vehicle_info: bookingData.customer.vehicleInfo || null
+      vehicle_info: bookingData.customer.vehicleInfo || null,
+      sms_consent: bookingData.customer.smsConsent || false
     };
 
     // Generate idempotency key to prevent duplicate bookings

@@ -115,14 +115,9 @@ export default async function handler(req, res) {
 
     // Sanitize package name (prevent XSS in email)
     const allowedPackages = [
-      // Auto packages
       'Essential Detail',
       'Executive Detail',
-      'Concierge Detail',
-      // Jet packages
-      'Light Aircraft Detail',
-      'Executive Jet Detail',
-      'Fleet & Large Aircraft'
+      'Concierge Detail'
     ];
 
     if (!allowedPackages.includes(bookingData.package_name)) {
@@ -270,7 +265,7 @@ export default async function handler(req, res) {
 
       <div class="detail-row">
         <span class="label">Category:</span>
-        <span class="value">${sanitizedBookingData.service_category === 'auto' ? 'Luxury Auto Detailing' : 'Private Jet Detailing'}</span>
+        <span class="value">Luxury Auto Detailing</span>
       </div>
 
       <div class="detail-row">
@@ -302,7 +297,7 @@ export default async function handler(req, res) {
     <ul style="color: #666;">
       <li>We'll send you a reminder 24 hours before your appointment</li>
       <li>Please arrive 5-10 minutes early</li>
-      <li>Our team will inspect your ${sanitizedBookingData.service_category === 'auto' ? 'vehicle' : 'aircraft'} and confirm the final price</li>
+      <li>Our team will inspect your vehicle and confirm the final price</li>
       <li>Feel free to contact us if you have any questions or need to reschedule</li>
     </ul>
 
