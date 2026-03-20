@@ -2,6 +2,7 @@
 // Handles sending SMS, webhook verification, and message logging
 
 /* eslint-disable no-undef */
+import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 
 const TELNYX_API_KEY = process.env.TELNYX_API_KEY;
@@ -87,13 +88,11 @@ export async function logMessage(messageData) {
 
 /**
  * Verify Telnyx webhook signature (Ed25519)
- * For production, use the telnyx package's built-in verification.
- * This is a simplified check that validates the webhook came from Telnyx.
+ * Uses Node.js built-in crypto to verify the Ed25519 signature.
  * @param {Object} req - Request object with headers and body
  * @returns {boolean} - Whether the signature is valid
  */
 export function verifyWebhookSignature(req) {
-  // In development, skip verification
   if (!TELNYX_PUBLIC_KEY) {
     console.warn('Telnyx public key not configured - skipping webhook verification');
     return true;
@@ -106,17 +105,33 @@ export function verifyWebhookSignature(req) {
     return false;
   }
 
-  // Verify timestamp is within 5 minutes to prevent replay attacks
+  // Reject timestamps older than 5 minutes (replay attack prevention)
   const timestampAge = Math.abs(Date.now() - new Date(timestamp).getTime());
   if (timestampAge > 300000) {
     return false;
   }
 
-  // For full Ed25519 verification, install the telnyx package:
-  // const telnyx = require('telnyx')(TELNYX_API_KEY);
-  // telnyx.webhooks.constructEvent(JSON.stringify(req.body), signature, timestamp, TELNYX_PUBLIC_KEY);
-  // For now, we rely on timestamp + signature presence check
-  return true;
+  try {
+    const payload = `${timestamp}|${JSON.stringify(req.body)}`;
+    const publicKeyBuffer = Buffer.from(TELNYX_PUBLIC_KEY, 'base64');
+    const signatureBuffer = Buffer.from(signature, 'base64');
+
+    // Ed25519 verify using Node.js crypto
+    const keyObject = crypto.createPublicKey({
+      key: Buffer.concat([
+        // Ed25519 DER prefix for a 32-byte public key
+        Buffer.from('302a300506032b6570032100', 'hex'),
+        publicKeyBuffer,
+      ]),
+      format: 'der',
+      type: 'spki',
+    });
+
+    return crypto.verify(null, Buffer.from(payload), keyObject, signatureBuffer);
+  } catch (err) {
+    console.error('Webhook signature verification failed:', err.message);
+    return false;
+  }
 }
 
 /**
