@@ -80,13 +80,21 @@ function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-luxury-gold/10 pt-8 sm:pt-10 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0">
+        <div className="border-t border-luxury-gold/10 pt-8 sm:pt-10 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 text-center md:text-left">
+          <p className="text-gray-500 text-sm">
             &copy; {year} Elite Detailing. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm text-gray-500">
+          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-500">
             <Link to="/privacy" className="hover:text-luxury-gold transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-luxury-gold transition-colors">Terms of Service</Link>
+            <a
+              href="https://www.websiteupgraderpro.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-luxury-gold transition-colors"
+            >
+              Made by Website Upgraders
+            </a>
           </div>
         </div>
       </div>

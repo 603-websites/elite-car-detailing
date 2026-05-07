@@ -136,12 +136,11 @@ function About() {
             variants={staggerContainer}
             initial="hidden"
             animate={coverageInView ? 'visible' : 'hidden'}
-            className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6"
           >
             {[
               { region: 'New York', member: 'Wesley' },
               { region: 'CT & RI', member: 'Dylan' },
-              { region: 'NH & MA', member: 'Louis' },
               { region: 'NH & RI', member: 'Vedanth' },
             ].map((area, index) => (
               <motion.div

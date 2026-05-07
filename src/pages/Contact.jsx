@@ -9,7 +9,6 @@ import { useScrollAnimation, fadeInUp, staggerContainer, scaleIn } from '../hook
 // Import team images
 import wesleyImg from '../assets/images/team/wesley-baccay.JPG';
 import dylanImg from '../assets/images/team/dylan-hovey.JPEG';
-import louisImg from '../assets/images/team/louis-sader.JPG';
 import vedanthImg from '../assets/images/team/vader.jpg';
 import car2 from '../assets/images/cars/car2.jpg';
 
@@ -36,12 +35,6 @@ function Contact() {
       location: 'Connecticut & Rhode Island',
       image: dylanImg,
       linkedin: 'https://www.linkedin.com/in/dylan-hovey-163358353/'
-    },
-    {
-      name: 'Louis Sader',
-      location: 'New Hampshire & Massachusetts',
-      image: louisImg,
-      linkedin: 'https://www.linkedin.com/in/louis-sader-a6a391287/'
     },
     {
       name: 'Vedanth Penumatsa',
