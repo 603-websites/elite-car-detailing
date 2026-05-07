@@ -95,7 +95,7 @@ export const createBooking = async (bookingData) => {
     return {
       success: false,
       error: error.message,
-      message: 'Failed to create booking. Please try again or call us at 603-275-7513.'
+      message: 'Failed to create booking. Please try again or call us at (XXX) XXX-XXXX.'
     };
   }
 };
@@ -233,7 +233,7 @@ export const submitContactForm = async (formData) => {
     return {
       success: false,
       error: error.message,
-      message: 'Failed to submit form. Please try again or call us at 603-275-7513.'
+      message: 'Failed to submit form. Please try again or call us at (XXX) XXX-XXXX.'
     };
   }
 };

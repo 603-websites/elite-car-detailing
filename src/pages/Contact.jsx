@@ -61,7 +61,7 @@ function Contact() {
     } catch (err) {
       setSubmitMessage({
         type: 'error',
-        text: 'An unexpected error occurred. Please try again or call us at 603-275-7513.'
+        text: 'An unexpected error occurred. Please try again or call us at (XXX) XXX-XXXX.'
       });
       console.error('Contact form error:', err);
     } finally {
@@ -157,8 +157,8 @@ function Contact() {
                   </svg>
                 </div>
                 <h3 className="text-xs sm:text-sm md:text-base font-heading text-white mb-1 font-bold">Phone</h3>
-                <a href="tel:+16032757513" className="text-gray-300 hover:text-luxury-gold transition-colors text-xs sm:text-sm font-bold">
-                  603-275-7513
+                <a href="tel:+1XXXXXXXXXX" className="text-gray-300 hover:text-luxury-gold transition-colors text-xs sm:text-sm font-bold">
+                  (XXX) XXX-XXXX
                 </a>
               </div>
 
@@ -169,8 +169,8 @@ function Contact() {
                   </svg>
                 </div>
                 <h3 className="text-xs sm:text-sm md:text-base font-heading text-white mb-1 font-bold">Email</h3>
-                <a href="mailto:louissader42@gmail.com" className="text-gray-300 hover:text-luxury-gold transition-colors text-xs sm:text-sm break-all font-bold">
-                  louissader42@gmail.com
+                <a href="mailto:info@elitedetailing.team" className="text-gray-300 hover:text-luxury-gold transition-colors text-xs sm:text-sm break-all font-bold">
+                  info@elitedetailing.team
                 </a>
               </div>
 
@@ -249,7 +249,7 @@ function Contact() {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-black border border-luxury-gold/20 rounded-lg text-white focus:border-luxury-gold focus:outline-none transition-colors"
-                placeholder="603-275-7513"
+                placeholder="(XXX) XXX-XXXX"
               />
             </div>
 

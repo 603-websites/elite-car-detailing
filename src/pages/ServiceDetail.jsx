@@ -125,10 +125,10 @@ const ServiceDetail = () => {
                   Book This Service
                 </Link>
                 <a
-                  href="tel:+16032757513"
+                  href="tel:+1XXXXXXXXXX"
                   className="btn-secondary text-center"
                 >
-                  Call 603-275-7513
+                  Call (XXX) XXX-XXXX
                 </a>
               </div>
             </motion.div>

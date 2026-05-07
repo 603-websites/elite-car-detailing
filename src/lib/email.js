@@ -169,8 +169,8 @@ export const generateBookingConfirmationEmail = async (bookingData) => {
 
     <p style="margin-top: 30px; color: #666;">
       <strong>Contact Us:</strong><br>
-      Phone: 603-275-7513<br>
-      Email: louissader42@gmail.com<br>
+      Phone: (XXX) XXX-XXXX<br>
+      Email: info@elitedetailing.team<br>
       Hours: Monday - Saturday, 8:00 AM - 6:00 PM
     </p>
   </div>

@@ -63,16 +63,16 @@ function Footer() {
               <li>New England & New York</li>
               <li>
                 <a
-                  href="tel:+16032757513"
+                  href="tel:+1XXXXXXXXXX"
                   className="text-luxury-gold hover:text-luxury-dark-gold transition-colors text-xl sm:text-2xl font-heading font-bold block mt-2"
                 >
-                  603-275-7513
+                  (XXX) XXX-XXXX
                 </a>
                 <span className="text-luxury-gold/60 text-xs uppercase tracking-wider">Call or Text</span>
               </li>
               <li className="mt-3">
-                <a href="mailto:louissader42@gmail.com" className="hover:text-luxury-gold transition-colors">
-                  louissader42@gmail.com
+                <a href="mailto:info@elitedetailing.team" className="hover:text-luxury-gold transition-colors">
+                  info@elitedetailing.team
                 </a>
               </li>
             </ul>
