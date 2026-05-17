@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { getAvailableTimeSlots } from '../lib/bookingService';
+
+const DEFAULT_TIME_SLOTS = [
+  '08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM',
+  '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM',
+  '04:00 PM', '05:00 PM',
+].map((time) => ({ time, available: true }));
 
 const AppointmentCalendar = ({ onDateSelect, onTimeSelect }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [timeSlots, setTimeSlots] = useState([]);
-  const [loadingSlots, setLoadingSlots] = useState(false);
+  const loadingSlots = false;
 
   // Filter out Sundays (business closed)
   const filterDate = (date) => {
@@ -15,7 +20,7 @@ const AppointmentCalendar = ({ onDateSelect, onTimeSelect }) => {
     return day !== 0; // 0 = Sunday
   };
 
-  const handleDateChange = async (date) => {
+  const handleDateChange = (date) => {
     setSelectedDate(date);
     setSelectedTime(null);
     if (onDateSelect) {
@@ -24,23 +29,7 @@ const AppointmentCalendar = ({ onDateSelect, onTimeSelect }) => {
     if (onTimeSelect) {
       onTimeSelect(null);
     }
-
-    // Fetch real availability from database
-    setLoadingSlots(true);
-    try {
-      const slots = await getAvailableTimeSlots(date);
-      setTimeSlots(slots);
-    } catch {
-      // Fallback: all slots available
-      const allSlots = [
-        '08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM',
-        '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM',
-        '04:00 PM', '05:00 PM'
-      ];
-      setTimeSlots(allSlots.map(time => ({ time, available: true })));
-    } finally {
-      setLoadingSlots(false);
-    }
+    setTimeSlots(DEFAULT_TIME_SLOTS);
   };
 
   const handleTimeSelect = (time) => {

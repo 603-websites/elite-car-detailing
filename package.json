@@ -5,23 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node debug-env.js && vite build",
+    "build": "vite build",
     "build:analyze": "vite build --mode production && npx vite-bundle-visualizer",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:supabase": "node test-supabase.js",
     "optimize:images": "chmod +x scripts/optimize-images.sh && ./scripts/optimize-images.sh"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.89.0",
     "dompurify": "^3.3.3",
     "framer-motion": "^12.23.26",
     "react": "^19.2.0",
     "react-datepicker": "^9.1.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.12.0",
-    "resend": "^6.6.0",
-    "validator": "^13.15.26"
+    "react-router-dom": "^7.12.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

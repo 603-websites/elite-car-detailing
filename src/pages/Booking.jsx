@@ -4,7 +4,8 @@ import PricingCalculator from '../components/PricingCalculator';
 import AppointmentCalendar from '../components/AppointmentCalendar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import { createBooking } from '../lib/bookingService';
+
+const BOOKING_EMAIL = 'info@elitedetailing.team';
 
 const Booking = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -74,32 +75,58 @@ const Booking = () => {
   const canProceedToStep3 = bookingData.date !== null && bookingData.time !== null;
   const canSubmit = bookingData.customer.name && bookingData.customer.email && bookingData.customer.phone;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError(null);
 
     try {
-      // Submit booking to Supabase
-      const result = await createBooking(bookingData);
+      const dateStr = bookingData.date
+        ? bookingData.date.toLocaleDateString('en-US', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+          })
+        : 'Not selected';
+      const addons = Array.isArray(bookingData.service?.addons) && bookingData.service.addons.length
+        ? bookingData.service.addons.map((a) => `- ${a.name || a}`).join('\n')
+        : 'None';
+      const subject = `Booking Request: ${bookingData.service?.package?.name || 'Service'} on ${dateStr}`;
+      const body = [
+        'Hi Elite Detailing,',
+        '',
+        'I would like to request the following appointment:',
+        '',
+        `Service: ${bookingData.service?.package?.name || 'N/A'} (${bookingData.service?.category || 'N/A'})`,
+        `Vehicle size: ${bookingData.service?.vehicleSize || 'N/A'}`,
+        `Date: ${dateStr}`,
+        `Time: ${bookingData.time || 'Not selected'}`,
+        `Estimated total: $${bookingData.totalPrice || 0}`,
+        '',
+        'Add-ons:',
+        addons,
+        '',
+        'My details:',
+        `Name: ${bookingData.customer.name}`,
+        `Email: ${bookingData.customer.email}`,
+        `Phone: ${bookingData.customer.phone}`,
+        `Vehicle info: ${bookingData.customer.vehicleInfo || 'N/A'}`,
+        `SMS reminders: ${bookingData.customer.smsConsent ? 'Yes' : 'No'}`,
+      ].join('\n');
 
-      if (result.success) {
-        setBookingConfirmation({
-          id: result.data?.id,
-          name: bookingData.customer.name,
-          email: bookingData.customer.email,
-          date: bookingData.date,
-          time: bookingData.time,
-          service: bookingData.service?.package?.name,
-          total: bookingData.totalPrice,
-        });
-      } else {
-        // Show error message
-        setSubmitError(result.message || 'Failed to create booking. Please try again.');
-      }
+      const mailto = `mailto:${BOOKING_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+
+      setBookingConfirmation({
+        id: null,
+        name: bookingData.customer.name,
+        email: bookingData.customer.email,
+        date: bookingData.date,
+        time: bookingData.time,
+        service: bookingData.service?.package?.name,
+        total: bookingData.totalPrice,
+      });
     } catch (error) {
       console.error('Booking submission error:', error);
-      setSubmitError('An unexpected error occurred. Please try again or call us at (XXX) XXX-XXXX.');
+      setSubmitError(`Couldn't open your email app. Please email us directly at ${BOOKING_EMAIL}.`);
     } finally {
       setIsSubmitting(false);
     }
