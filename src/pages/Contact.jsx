@@ -3,8 +3,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import { submitContactForm } from '../lib/bookingService';
-import { useScrollAnimation, fadeInUp, staggerContainer, scaleIn } from '../hooks/useScrollAnimation';
+const CONTACT_EMAIL = 'info@elitedetailing.team';
 
 // Import team images
 import wesleyImg from '../assets/images/team/wesley-baccay.JPG';
@@ -44,24 +43,34 @@ function Contact() {
     }
   ];
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitMessage(null);
 
     try {
-      const result = await submitContactForm(formData);
+      const subject = `New inquiry from ${formData.name}`;
+      const body = [
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone || 'N/A'}`,
+        '',
+        'Message:',
+        formData.message,
+      ].join('\n');
 
-      if (result.success) {
-        setSubmitMessage({ type: 'success', text: result.message });
-        setFormData({ name: '', email: '', phone: '', message: '' });
-      } else {
-        setSubmitMessage({ type: 'error', text: result.message });
-      }
+      const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+
+      setSubmitMessage({
+        type: 'success',
+        text: `Your email app should open with your message ready to send to ${CONTACT_EMAIL}. If it didn't, email us directly.`,
+      });
+      setFormData({ name: '', email: '', phone: '', message: '' });
     } catch (err) {
       setSubmitMessage({
         type: 'error',
-        text: 'An unexpected error occurred. Please try again or call us at (XXX) XXX-XXXX.'
+        text: `Couldn't open your email app. Please email us directly at ${CONTACT_EMAIL}.`,
       });
       console.error('Contact form error:', err);
     } finally {
