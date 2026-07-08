@@ -124,12 +124,12 @@ const ServiceDetail = () => {
                 >
                   Book This Service
                 </Link>
-                <a
-                  href="tel:+1XXXXXXXXXX"
+                <Link
+                  to="/contact"
                   className="btn-secondary text-center"
                 >
-                  Call (XXX) XXX-XXXX
-                </a>
+                  Contact Us
+                </Link>
               </div>
             </motion.div>
           </div>

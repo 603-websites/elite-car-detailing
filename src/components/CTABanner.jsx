@@ -43,11 +43,11 @@ const CTABanner = () => {
                 Book Now
               </button>
             </Link>
-            <a href="tel:+1XXXXXXXXXX" className="w-full sm:w-auto">
+            <Link to="/contact" className="w-full sm:w-auto">
               <button className="btn-secondary w-full sm:w-auto min-h-[44px]">
-                Call Us
+                Contact Us
               </button>
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
