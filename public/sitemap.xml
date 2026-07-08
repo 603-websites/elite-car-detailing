@@ -3,7 +3,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://elitedetailing.com/</loc>
+    <loc>https://elite-detailing-website.vercel.app/</loc>
     <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
   <!-- Services Page -->
   <url>
-    <loc>https://elitedetailing.com/services</loc>
+    <loc>https://elite-detailing-website.vercel.app/services</loc>
     <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -19,7 +19,7 @@
 
   <!-- Booking Page -->
   <url>
-    <loc>https://elitedetailing.com/booking</loc>
+    <loc>https://elite-detailing-website.vercel.app/booking</loc>
     <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -27,7 +27,7 @@
 
   <!-- About Page -->
   <url>
-    <loc>https://elitedetailing.com/about</loc>
+    <loc>https://elite-detailing-website.vercel.app/about</loc>
     <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -35,7 +35,7 @@
 
   <!-- Contact Page -->
   <url>
-    <loc>https://elitedetailing.com/contact</loc>
+    <loc>https://elite-detailing-website.vercel.app/contact</loc>
     <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

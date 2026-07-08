@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-const CONTACT_EMAIL = 'info@elitedetailing.team';
+const CONTACT_EMAIL = 'hello@websiteupgraderpro.com';
 
 // Import team images
 import wesleyImg from '../assets/images/team/wesley-baccay.JPG';
@@ -158,19 +158,7 @@ function Contact() {
             </div>
 
             {/* Contact Info - Horizontal Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-6 border-t border-luxury-gold/20">
-              <div className="text-center">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <h3 className="text-xs sm:text-sm md:text-base font-heading text-white mb-1 font-bold">Phone</h3>
-                <a href="tel:+1XXXXXXXXXX" className="text-gray-300 hover:text-luxury-gold transition-colors text-xs sm:text-sm font-bold">
-                  (XXX) XXX-XXXX
-                </a>
-              </div>
-
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-6 border-t border-luxury-gold/20">
               <div className="text-center">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-2">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,8 +166,8 @@ function Contact() {
                   </svg>
                 </div>
                 <h3 className="text-xs sm:text-sm md:text-base font-heading text-white mb-1 font-bold">Email</h3>
-                <a href="mailto:info@elitedetailing.team" className="text-gray-300 hover:text-luxury-gold transition-colors text-xs sm:text-sm break-all font-bold">
-                  info@elitedetailing.team
+                <a href="mailto:hello@websiteupgraderpro.com" className="text-gray-300 hover:text-luxury-gold transition-colors text-xs sm:text-sm break-all font-bold">
+                  hello@websiteupgraderpro.com
                 </a>
               </div>
 
@@ -209,6 +197,15 @@ function Contact() {
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-300">
               Have questions? We're here to help.
+            </p>
+          </div>
+
+          <div className="bg-luxury-gold/10 border border-luxury-gold/30 rounded-lg p-4 mb-6 text-center">
+            <p className="text-sm sm:text-base text-luxury-gold font-semibold">
+              This is a demonstration website available for purchase.
+            </p>
+            <p className="text-xs sm:text-sm text-gray-300 mt-1">
+              Submitting opens your email app so your message reaches Website Upgraders at hello@websiteupgraderpro.com. Nothing is stored on this demo.
             </p>
           </div>
 

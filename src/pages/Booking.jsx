@@ -5,7 +5,7 @@ import AppointmentCalendar from '../components/AppointmentCalendar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
-const BOOKING_EMAIL = 'info@elitedetailing.team';
+const BOOKING_EMAIL = 'hello@websiteupgraderpro.com';
 
 const Booking = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -157,6 +157,9 @@ const Booking = () => {
             <p className="text-sm sm:text-base md:text-lg text-luxury-white/70">
               Complete your booking in 3 simple steps
             </p>
+            <p className="mt-4 inline-block bg-luxury-gold/10 border border-luxury-gold/30 rounded-lg px-4 py-2 text-xs sm:text-sm text-luxury-gold">
+              Demonstration website available for purchase. Confirming opens your email app to send the request to Website Upgraders. No booking is stored.
+            </p>
           </div>
         </div>
       </section>
@@ -216,10 +219,10 @@ const Booking = () => {
                     </svg>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-luxury-white mb-2">
-                    Booking Confirmed
+                    Request Ready to Send
                   </h2>
                   <p className="text-luxury-white/60 mb-8">
-                    Thank you, {bookingConfirmation.name}! A confirmation email has been sent to {bookingConfirmation.email}.
+                    Thank you, {bookingConfirmation.name}! Your email app should have opened with your booking request ready to send. If it did not, email us at {BOOKING_EMAIL}. This is a demonstration site, so no booking is stored.
                   </p>
 
                   <div className="bg-luxury-black border border-luxury-gold/20 p-5 rounded-sm text-left space-y-3 mb-8">
@@ -529,11 +532,11 @@ const Booking = () => {
                   {/* Contact Info */}
                   <div className="mt-6 pt-6 border-t border-luxury-gold/20">
                     <p className="text-luxury-white/70 text-sm mb-2">
-                      Questions? Call us:
+                      Questions? Email us:
                     </p>
-                    <p className="text-luxury-gold font-semibold">
-                      (XXX) XXX-XXXX
-                    </p>
+                    <a href="mailto:hello@websiteupgraderpro.com" className="text-luxury-gold font-semibold break-all hover:text-luxury-gold/80 transition-colors">
+                      hello@websiteupgraderpro.com
+                    </a>
                   </div>
                 </div>
               </div>

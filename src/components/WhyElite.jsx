@@ -50,7 +50,7 @@ const WhyElite = () => {
       image: car3,
       imageAlt: 'Meticulous detailing work on a luxury vehicle',
       title: 'Meticulous Attention to Detail',
-      description: "Every surface, every crevice, every reflection. We don't cut corners — we polish them.",
+      description: "Every surface, every crevice, every reflection. We don't cut corners, we polish them.",
       imageLeft: true,
     },
     {

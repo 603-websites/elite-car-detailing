@@ -61,18 +61,9 @@ function Footer() {
             <h4 className="font-heading text-lg text-white mb-4">Contact</h4>
             <ul className="space-y-3 text-sm text-gray-400">
               <li>New England & New York</li>
-              <li>
-                <a
-                  href="tel:+1XXXXXXXXXX"
-                  className="text-luxury-gold hover:text-luxury-dark-gold transition-colors text-xl sm:text-2xl font-heading font-bold block mt-2"
-                >
-                  (XXX) XXX-XXXX
-                </a>
-                <span className="text-luxury-gold/60 text-xs uppercase tracking-wider">Call or Text</span>
-              </li>
               <li className="mt-3">
-                <a href="mailto:info@elitedetailing.team" className="hover:text-luxury-gold transition-colors">
-                  info@elitedetailing.team
+                <a href="mailto:hello@websiteupgraderpro.com" className="hover:text-luxury-gold transition-colors">
+                  hello@websiteupgraderpro.com
                 </a>
               </li>
             </ul>

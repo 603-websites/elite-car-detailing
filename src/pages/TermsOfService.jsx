@@ -102,12 +102,8 @@ function TermsOfService() {
                 For questions about these terms, reach out to us:
               </p>
               <p>
-                <a href="mailto:info@elitedetailing.team" className="text-luxury-gold hover:text-luxury-gold/80 transition-colors">
-                  info@elitedetailing.team
-                </a>
-                {' '} | {' '}
-                <a href="tel:+1XXXXXXXXXX" className="text-luxury-gold hover:text-luxury-gold/80 transition-colors">
-                  (603) 275-7513
+                <a href="mailto:hello@websiteupgraderpro.com" className="text-luxury-gold hover:text-luxury-gold/80 transition-colors">
+                  hello@websiteupgraderpro.com
                 </a>
               </p>
             </section>
